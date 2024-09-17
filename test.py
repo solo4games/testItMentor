@@ -1,7 +1,7 @@
 def do_operation(expression):
     a = int(expression[0])
     b = int(expression[2])
-    if a > 10 or b > 10:
+    if a < 1 or a > 10 or b < 1 or b > 10:
         raise Exception("Throws Exception")
     operator = expression[1]
     if operator == '+':
@@ -23,23 +23,30 @@ def main(input: str):
             raise Exception("Throws Exception")
         if "." in expression[0] or "." in expression[2]:
             raise Exception("Throws Exception")
-        print(do_operation(expression))
+        return str(do_operation(expression))
     except Exception as e:
-        print(e)
+        return e
 
 
-main("10 - 5")
-main("3 - 5")
-main("3 * 5")
-main("10 / 5")
-main("9 / 5")
-main("3 + 5")
-main("6 + 5")
-main("1")
-main("1 + 2 1")
-main("1 + 2 + 3")
-main("3 ( 5")
-main("11 - 5")
-main("3 - 11")
-main("1.0 - 5")
-main("3 - 5.0")
+if __name__ == '__main__':
+    is_cycle = True
+    while is_cycle:
+        expr = input("Enter math expression please: ")
+        print(main(expr))
+        exit_cycle = input("Press 1 to exit: ")
+        if exit_cycle == "1":
+            is_cycle = False
+print(main("3 - 5"))
+print(main("3 * 5"))
+print(main("10 / 5"))
+print(main("9 / 5"))
+print(main("3 + 5"))
+print(main("6 + 5"))
+print(main("1"))
+print(main("1 + 2 1"))
+print(main("1 + 2 + 3"))
+print(main("3 ( 5"))
+print(main("11 - 5"))
+print(main("3 - 11"))
+print(main("1.0 - 5"))
+print(main("3 - 5.0"))
